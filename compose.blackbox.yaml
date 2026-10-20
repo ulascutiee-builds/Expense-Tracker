@@ -1,0 +1,13 @@
+services:
+  blackbox-exporter:
+    image: prom/blackbox-exporter:v0.27.0
+    container_name: expense-blackbox
+    restart: unless-stopped
+    volumes:
+      - ./blackbox/blackbox.yml:/etc/blackbox_exporter/config.yml:ro
+    command:
+      - --config.file=/etc/blackbox_exporter/config.yml
+    networks:
+      - backend
+    security_opt:
+      - no-new-privileges:true
