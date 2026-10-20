@@ -1,0 +1,22 @@
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Logs
+*.log
+logs/
+
+# Runtime and backups
+*.bak
+*.tmp
+*.swp
+.DS_Store
+
+# Local database data
+pgdata/
+postgres-data/
