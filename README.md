@@ -140,3 +140,18 @@ Grafana Explore ho tro truy van LogQL:
 
 Day la du an thuc hanh DevOps tren Ubuntu VMware.
 Can bo sung quan ly secret, HTTPS, gioi han truy cap quan tri va cai thien phan tach Docker Network truoc khi trien khai production.
+
+## 11. Docker Discovery va Docker Socket Proxy
+
+He thong su dung Docker Service Discovery de Promtail tu dong
+phat hien container Web, Nginx va PostgreSQL.
+
+- Docker Socket Proxy cung cap Docker API voi quyen gioi han.
+- Promtail ket noi thong qua mang Docker noi bo docker-api.
+- CONTAINERS=1 va NETWORKS=1 cho phep doc thong tin can thiet.
+- POST=0 ngan cac yeu cau POST qua proxy.
+- Promtail nhan dien dich vu bang nhan com.docker.compose.service.
+- Khong can khai bao ID container co dinh trong Promtail.
+
+Luu y: Quyen doc Docker API van can duoc bao ve va gioi han
+truy cap trong moi truong production.
