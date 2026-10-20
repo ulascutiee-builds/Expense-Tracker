@@ -1,0 +1,40 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+  - job_name: expense-web
+    static_configs:
+      - targets: [localhost]
+        labels:
+          job: expense-tracker
+          service: web
+          __path__: /var/lib/docker/containers/7af6b83430ec18d05a5f21adda1992e4e0c9e07536f81a29bda4fd4c06277095/*-json.log
+    pipeline_stages:
+      - docker: {}
+
+  - job_name: expense-nginx
+    static_configs:
+      - targets: [localhost]
+        labels:
+          job: expense-tracker
+          service: nginx
+          __path__: /var/lib/docker/containers/ba4151a988a5f294975f17a94b1c96738e3f587a541590378583b5dcae2dcd36/*-json.log
+    pipeline_stages:
+      - docker: {}
+
+  - job_name: expense-postgres
+    static_configs:
+      - targets: [localhost]
+        labels:
+          job: expense-tracker
+          service: db
+          __path__: /var/lib/docker/containers/17310c952766ee90241856214cb2846dbba94ed1b42adfbf712892729804cba3/*-json.log
+    pipeline_stages:
+      - docker: {}
